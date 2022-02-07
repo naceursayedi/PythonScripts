@@ -6,3 +6,5 @@ with ZipFile("file_name.zip", "w") as newzip:
     newzip.write("text1.txt")
     newzip.write("text2.txt")
 newzip.close()
+#Fil execute
+# https://datatofish.com/executable-pyinstaller/
