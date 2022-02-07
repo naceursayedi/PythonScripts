@@ -1,0 +1,8 @@
+# importing ZipFile class from zipfile module
+from zipfile import ZipFile
+
+# more fine-grained control over ZIP files
+with ZipFile("file_name.zip", "w") as newzip:
+    newzip.write("text1.txt")
+    newzip.write("text2.txt")
+newzip.close()
