@@ -1,0 +1,22 @@
+import smtplib
+gmailaddress = input("what is your gmail address? \n ")
+gmailpassword = input("what is the password for that email address? \n  ")
+vorlage = {
+  "_export": {
+    "mailto": "mailto1@gmail.com",
+    "betref": "Test",
+    "msg": "Hi Naceur"
+  },
+  "_briefdruck": {
+    "mailto": "mailto2@gmail.com",
+    "betref": "Test",
+    "msg": "Hi Naceur"
+  }
+}
+
+mailServer = smtplib.SMTP('smtp.gmail.com', 587)
+mailServer.starttls()
+mailServer.login(gmailaddress,gmailpassword)
+mailServer.sendmail(gmailaddress, vorlage["_export"]["mailto"], vorlage["_export"]["msg"])
+print(" \n Sent!")
+mailServer.quit()
