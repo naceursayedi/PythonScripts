@@ -1,6 +1,8 @@
+#Mail Send Script 
+
 import smtplib
-gmailaddress = input("what is your gmail address? \n ")
-gmailpassword = input("what is the password for that email address? \n  ")
+
+#Mails Exemples
 vorlage = {
   "_export": {
     "mailto": "mailto1@gmail.com",
@@ -13,10 +15,16 @@ vorlage = {
     "msg": "Hi Naceur"
   }
 }
-
+#SMTP server Setting 
+mailaddress = input("what is your gmail address? \n ")
+mailpassword = input("what is the password for that email address? \n  ")
 mailServer = smtplib.SMTP('smtp.gmail.com', 587)
 mailServer.starttls()
 mailServer.login(gmailaddress,gmailpassword)
+
+#Sending Mails
 mailServer.sendmail(gmailaddress, vorlage["_export"]["mailto"], vorlage["_export"]["msg"])
-print(" \n Sent!")
+print(" \n " vorlage["_export"] " Sent!")
+
+
 mailServer.quit()
