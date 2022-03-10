@@ -1,31 +1,30 @@
-#Mail Send Script 
-
 import smtplib
-import json
-#Mails Exemples
+
 vorlage = {
-  "_export": {
-    "mailto": "naceursayedi@gmail.com",
+  "b1": {
+    "mailto": "n@gmail.com",
     "betref": "Test",
-    "msg": "Hallo Naceur, \n vielen Dank für Dein Interesse an HeavenHR. Leider können wir Deine Bewerbung, trotz des interessanten Profils, für die Besetzung der Stelle nicht weiter berücksichtigen. Aufgrund der Vielzahl an Bewerbungen werden wir uns auf Bewerber konzentrieren, deren Profile unseren Anforderungen eher entsprechen. \n Wir wünschen Dir alles Gute für die Zukunft, sowohl privat als auch in der beruflichen Entwicklung.  Viele Grüße         Paula Zimak "},
-  "_briefdruck": {
-    "mailto": "mailto2@gmail.com",
-    "betref": "Test",
-    "msg": "Hi Naceur"
+    "msg": """From: n@gmail.com
+To:n@gmail.com
+Subject:TRy to send mail  
+
+Hi Naceur
+üößß     
+     """
   }
 }
-with open("data_file.json", "w") as write_file:
-    json.dump(vorlage, write_file)
 
-#SMTP server Setting 
+#SMTP server Setting
 mailaddress = input("what is your gmail address? \n ")
 mailpassword = input("what is the password for that email address? \n  ")
 mailServer = smtplib.SMTP('smtp.gmail.com', 587)
 mailServer.starttls()
-mailServer.login(gmailaddress,gmailpassword)
+mailServer.login(mailaddress,mailpassword)
 
 #Sending Mails
-mailServer.sendmail(gmailaddress, vorlage["_export"]["mailto"], vorlage["_export"]["msg"])
+msg=vorlage["b1"]["msg"]
+msg=msg.encode(encoding="utf-8",errors="ignore")
+mailServer.sendmail(mailaddress, vorlage["b1"]["mailto"],msg )
 print(" Sent!")
 
 
